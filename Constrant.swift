@@ -38,4 +38,19 @@ public extension NSLayoutConstraint {
     public class func offset(inSuperViewForView view: UIView, offset: CGFloat, edges: UIRectEdge) -> [NSLayoutConstraint] {
         return self.offset(view: view, inView: view.superview, offset: offset, edges: edges)
     }
+
+    public class func center(viewVertically: UIView, inView: UIView?) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: viewVertically, attribute: .centerY, relatedBy: .equal, toItem: inView, attribute: .centerY, multiplier: 1.0, constant: 0.0)
+    }
+
+    public class func center(viewHorizontally: UIView, inView: UIView?) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: viewHorizontally, attribute: .centerX, relatedBy: .equal, toItem: inView, attribute: .centerX, multiplier: 1.0, constant: 0.0)
+    }
+
+    public class func center(view: UIView, inView: UIView?) -> [NSLayoutConstraint] {
+        return [
+            center(viewVertically: view, inView: inView),
+            center(viewHorizontally: view, inView: inView)
+        ]
+    }
 }

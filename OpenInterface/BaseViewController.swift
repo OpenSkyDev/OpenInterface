@@ -8,6 +8,6 @@
 
 import UIKit
 
-public class BaseViewController : UIViewController {
+open class BaseViewController : UIViewController {
 
 }
