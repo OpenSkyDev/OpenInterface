@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940D52371D6CDA9E00556790 /* BaseViewControllerAnimationTransiton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940D52361D6CDA9E00556790 /* BaseViewControllerAnimationTransiton.swift */; };
+		940D52391D6CE61900556790 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940D52381D6CE61900556790 /* Rect.swift */; };
+		94199BA01D6D077800CD2ECB /* BaseFetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94199B9F1D6D077800CD2ECB /* BaseFetchedResultsTableViewController.swift */; };
 		946AD5FB1D6A9C0600F58E60 /* OpenInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 946AD5F91D6A9C0600F58E60 /* OpenInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		946AD6341D6A9CFF00F58E60 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946AD6331D6A9CFF00F58E60 /* BaseViewController.swift */; };
 		946AD6381D6A9D4600F58E60 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946AD6371D6A9D4600F58E60 /* BaseTableViewController.swift */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		940D52361D6CDA9E00556790 /* BaseViewControllerAnimationTransiton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewControllerAnimationTransiton.swift; sourceTree = "<group>"; };
+		940D52381D6CE61900556790 /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
+		94199B9F1D6D077800CD2ECB /* BaseFetchedResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseFetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		946AD5F61D6A9C0600F58E60 /* OpenInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		946AD5F91D6A9C0600F58E60 /* OpenInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenInterface.h; sourceTree = "<group>"; };
 		946AD5FA1D6A9C0600F58E60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		940D52351D6CDA7700556790 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				940D52361D6CDA9E00556790 /* BaseViewControllerAnimationTransiton.swift */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
 		946AD5EC1D6A9C0600F58E60 = {
 			isa = PBXGroup;
 			children = (
@@ -73,8 +87,10 @@
 		946AD6361D6A9D1D00F58E60 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				940D52351D6CDA7700556790 /* Transitions */,
 				946AD6331D6A9CFF00F58E60 /* BaseViewController.swift */,
 				946AD6371D6A9D4600F58E60 /* BaseTableViewController.swift */,
+				94199B9F1D6D077800CD2ECB /* BaseFetchedResultsTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -84,6 +100,7 @@
 			children = (
 				946AD63A1D6A9D9D00F58E60 /* View.swift */,
 				946AD63C1D6A9F4000F58E60 /* Constrant.swift */,
+				940D52381D6CE61900556790 /* Rect.swift */,
 			);
 			name = Extensions;
 			path = ..;
@@ -171,7 +188,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				946AD6381D6A9D4600F58E60 /* BaseTableViewController.swift in Sources */,
+				940D52391D6CE61900556790 /* Rect.swift in Sources */,
+				940D52371D6CDA9E00556790 /* BaseViewControllerAnimationTransiton.swift in Sources */,
 				946AD6341D6A9CFF00F58E60 /* BaseViewController.swift in Sources */,
+				94199BA01D6D077800CD2ECB /* BaseFetchedResultsTableViewController.swift in Sources */,
 				946AD63D1D6A9F4000F58E60 /* Constrant.swift in Sources */,
 				946AD63B1D6A9D9D00F58E60 /* View.swift in Sources */,
 			);

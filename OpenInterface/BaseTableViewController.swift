@@ -22,18 +22,19 @@ public protocol TableViewSetup : class {
     func configure<T: UITableViewCell>(cell: T, forRowAtIndexPath indexPath: IndexPath)
 }
 
-public class BaseTableViewController: BaseViewController, TableViewSetup {
+open class BaseTableViewController: BaseViewController, TableViewSetup, UITableViewDelegate, UITableViewDataSource {
     static let defaultCellIdentifier = "BaseTableViewControllerDefaultCell"
 
-    var tableView: UITableView {
+    lazy var tableView: UITableView = {
         let tv = UITableView.newAutoLayoutView()
         self.view.addSubview(tv)
         self.installConstrants(forTableView: tv, inView: self.view)
+        self._finishTableViewSetup(tv)
         return tv
-    }
+    }()
 
     // MARK: - View Lifecycle
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         self.reloadTableView()
@@ -41,42 +42,48 @@ public class BaseTableViewController: BaseViewController, TableViewSetup {
 
 
     // MARK: - Data Management
-    func reloadTableView() {
+    open func reloadTableView() {
         self.tableView.reloadData()
     }
-}
 
-extension BaseTableViewController : UITableViewDataSource {
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    // MARK: - Setup
+    private final func _finishTableViewSetup(_ tv: UITableView) {
+        tv.register(UITableViewCell.self, forCellReuseIdentifier: BaseTableViewController.defaultCellIdentifier)
+        tv.dataSource = self
+        tv.delegate = self
+        self.finishSetup(forTableView: tv)
+    }
+
+    // MARK: - Setup
+    open func installConstrants(forTableView tableView: UITableView, inView view: UIView) {
+        view.addConstraints(NSLayoutConstraint.offset(inSuperViewForView: tableView, offset: 0.0, edges: [.all]))
+    }
+
+    open func finishSetup(forTableView tableView: UITableView) {
+
+    }
+
+    open func identifier(inTableView tableView: UITableView, forCellAtIndexPath indexPath: IndexPath) -> String {
+        return BaseTableViewController.defaultCellIdentifier
+    }
+
+    open func configure<T: UITableViewCell>(cell: T, forRowAtIndexPath indexPath: IndexPath) {
+        
+    }
+
+    // MARK: - Table Data Source
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return 0
     }
 
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = self.identifier(inTableView: tableView, forCellAtIndexPath: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         self.configure(cell: cell, forRowAtIndexPath: indexPath)
         return cell
-    }
-}
-
-extension TableViewSetup {
-    public func installConstrants(forTableView tableView: UITableView, inView view: UIView) {
-        view.addConstraints(NSLayoutConstraint.offset(inSuperViewForView: tableView, offset: 0.0, edges: [.all]))
-    }
-
-    public func finishSetup(forTableView tableView: UITableView) {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: BaseTableViewController.defaultCellIdentifier)
-    }
-
-    public func identifier(inTableView tableView: UITableView, forCellAtIndexPath indexPath: IndexPath) -> String {
-        return BaseTableViewController.defaultCellIdentifier
-    }
-
-    public func configure<T: UITableViewCell>(cell: T, forRowAtIndexPath indexPath: IndexPath) {
-
     }
 }
